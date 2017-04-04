@@ -18,12 +18,9 @@ connection.connect(function(err) {
     }
 });
 
-app.get('/',function(req,res){
-    res.send(200, "input number");
-});
-
 app.get('/:input_id',function(req,res){
     var pub_id = req.params.input_id;
+    var people_id = 5;
     connection.beginTransaction(function(err) {
         if (err) {
             throw err;
@@ -76,7 +73,7 @@ app.get('/:input_id',function(req,res){
                             });
                     }// if err
 
-                    var output = "Title : " + title + "<br><br> Name : " + authors_name;
+                    var output = "Title : " + title + "<br><br> Name" + authors_name;
                     res.send(200, output);
  
                  });// commit
