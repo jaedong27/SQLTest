@@ -18,8 +18,8 @@ connection.connect(function(err) {
     }
 });
 
-app.get('/:input_id',function(req,res){
-    var pub_id = req.params.input_id;
+app.get('/:test_id',function(req,res){
+    var pub_id = req.params.test_id;
     var people_id = 5;
     connection.beginTransaction(function(err) {
         if (err) {
@@ -35,6 +35,12 @@ app.get('/:input_id',function(req,res){
             }// if err
 //            console.log('insert transaction log');
             //var log = {'userid': 'req.body.userid'};
+            if(result.length == 0)
+            {
+                console.log("no value");
+                return;
+            }
+            console.log(result.length);
             console.log(result[0].title);
             var title = result[0].title;
             console.log(result[0].authors);
